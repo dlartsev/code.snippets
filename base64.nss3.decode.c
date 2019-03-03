@@ -40,6 +40,6 @@ BOOL nss3() {
 int APIENTRY wWinMain(_In_ HINSTANCE hInstance, _In_opt_ HINSTANCE hPrevInstance, _In_ LPWSTR lpCmdLine, _In_ int nCmdShow)
 {
     int decodeLen = 0;
-	  char *decodeData = NULL;
-	  Base64Decode(strCryptData, &decodeData, &decodeLen);
+    char *decodeData = NULL;
+    Base64Decode(strCryptData, &decodeData, &decodeLen);
 }
